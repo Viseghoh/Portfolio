@@ -1,6 +1,8 @@
 "use strict";
 let answer = Math.trunc(Math.random() * 20) + 1;
+console.log(answer);
 let score = 20;
+
 let message = document.querySelector(".message");
 let number = document.querySelector(".number");
 let highScore = document.querySelector(".highscore");
@@ -14,9 +16,12 @@ document.querySelector(".check").addEventListener("click", (e) => {
   } else if (guess === answer) {
     message.textContent = "😍 You're Correct!";
     number.textContent = guess;
-    highScore.textContent = score;
     guessCheck.disabled = true;
     document.body.style.backgroundColor = "#60b347";
+
+    if (Number(currentScore.textContent) > Number(highScore.textContent)) {
+      highScore.textContent = currentScore.textContent;
+    }
   } else if (guess > answer) {
     if (score > 1) {
       message.textContent = "👎🏾 Too High!";
