@@ -1,0 +1,2 @@
+// Modal Setup
+"use strict";
