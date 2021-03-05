@@ -2,7 +2,6 @@
 "use strict";
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
-const btnCloseModal = document.querySelector(".close-modal");
 
 const openModal = () => {
   modal.classList.remove("hidden");
@@ -26,6 +25,7 @@ const addGlobalEventListener = (type, selector, callback) => {
 addGlobalEventListener("click", ".overlay", () => {
   closeModal();
 });
+
 addGlobalEventListener("keydown", "Escape", () => {
   closeModal();
 });
@@ -33,6 +33,7 @@ addGlobalEventListener("keydown", "Escape", () => {
 addGlobalEventListener("click", ".close-modal", () => {
   closeModal();
 });
+
 addGlobalEventListener("click", ".show-modal", () => {
   openModal();
 });
