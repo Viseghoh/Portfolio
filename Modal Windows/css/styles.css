@@ -97,6 +97,11 @@ nav {
   border: none;
   font-size: 2rem;
 }
+.close-modal:hover {
+  color: #a4050578;
+  transform: rotate(90deg);
+  transition: all 0.4s ease-in-out;
+}
 
 .overlay {
   position: absolute;
