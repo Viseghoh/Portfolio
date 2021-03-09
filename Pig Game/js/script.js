@@ -21,7 +21,7 @@ const diceRoll = (currentPlayer) => {
   // Current Score
 
   // Roll Die
-  let dieNumber = Math.floor(Math.random() * 6 + 1);
+  let dieNumber = Math.floor(Math.random() * 6) + 1;
 
   // Change Die Image on Screen
   if (dieNumber !== 1) {
@@ -35,6 +35,7 @@ const diceRoll = (currentPlayer) => {
       `#current--${currentPlayer}`
     ).textContent = turnTotal;
   }
+  console.log(`Die: ${dieNumber}`);
   console.log(turnTotal);
 };
 
@@ -42,11 +43,8 @@ const diceRoll = (currentPlayer) => {
 const holdRoll = (currentPlayer) => {
   playerScore = turnTotal;
   document.querySelector(`#score--${currentPlayer}`).textContent = playerScore;
-  if (currentPlayer === 0) {
-    currentPlayer++;
-  } else {
-    currentPlayer--;
-  }
+  currentPlayer === 0 ? (currentPlayer = 1) : (currentPlayer = 0);
+  console.log(currentPlayer);
 };
 
 // Switch Player
