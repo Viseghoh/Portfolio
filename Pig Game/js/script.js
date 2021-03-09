@@ -40,7 +40,7 @@ const diceRoll = (currentPlayer) => {
 };
 
 // Hold Function
-const holdRoll = (currentPlayer) => {
+const endTurn = (currentPlayer) => {
   playerScore = turnTotal;
   document.querySelector(`#score--${currentPlayer}`).textContent = playerScore;
   currentPlayer === 0 ? (currentPlayer = 1) : (currentPlayer = 0);
@@ -54,5 +54,5 @@ addGlobalEventListener("click", ".btn--roll", (e) => {
   diceRoll(currentPlayer);
 });
 addGlobalEventListener("click", ".btn--hold", (e) => {
-  holdRoll(currentPlayer);
+  endTurn(currentPlayer);
 });
