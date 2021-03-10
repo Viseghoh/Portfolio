@@ -1,5 +1,6 @@
 "use strict";
-let currentPlayer = 1;
+let currentPlayer = 0;
+let scoreToWin = 80;
 let playerScore = Number(
   document.querySelector(`#score--${currentPlayer}`).textContent
 );
@@ -29,30 +30,85 @@ const diceRoll = (currentPlayer) => {
       .querySelector(".dice")
       .setAttribute("src", `./images/dice-${dieNumber}.png`);
 
-    // Update Player's Score
+    // Update Player's Current Total
     turnTotal += dieNumber;
     document.querySelector(
       `#current--${currentPlayer}`
     ).textContent = turnTotal;
+  } else {
+    turnTotal = 0;
+    // Reset Player Total
+    document.querySelector(`#current--${currentPlayer}`).textContent = 0;
+    // Reset Current Score
+    document.querySelector(`#score--${currentPlayer}`).textContent = 0;
+    switchPlayer();
   }
-  console.log(`Die: ${dieNumber}`);
-  console.log(turnTotal);
 };
 
 // Hold Function
 const endTurn = (currentPlayer) => {
-  playerScore = turnTotal;
-  document.querySelector(`#score--${currentPlayer}`).textContent = playerScore;
-  currentPlayer === 0 ? (currentPlayer = 1) : (currentPlayer = 0);
-  console.log(currentPlayer);
+  // Get Current Player Score
+  let currentPlayerScore = Number(
+    document.querySelector(`#score--${currentPlayer}`).textContent
+  );
+  // Add the turn Total to Player Score
+  currentPlayerScore += turnTotal;
+
+  // Update Current Player Score
+  document.querySelector(
+    `#score--${currentPlayer}`
+  ).textContent = currentPlayerScore;
+
+  // Reset Turn Total
+  turnTotal = 0;
+  document.querySelector(`#current--${currentPlayer}`).textContent = 0;
+
+  // Switch Players
+
+  switchPlayer();
 };
 
 // Switch Player
-const switchPlayer = (currentPlayer) => {};
+const switchPlayer = () => {
+  document
+    .querySelector(`.player--${currentPlayer}`)
+    .classList.remove("player--active");
+  document
+    .querySelector(
+      `.player--${
+        currentPlayer === 0 ? (currentPlayer = 1) : (currentPlayer = 0)
+      }`
+    )
+    .classList.add("player--active");
+};
+
+// Reset Game
+const gameReset = () => {
+  // Reset Player Scores
+  const allScores = document.querySelectorAll(".score");
+  for (let score of allScores) {
+    score.textContent = 0;
+  }
+  // Reset Current Scores
+  const allCurrentScores = document.querySelectorAll(".current-score");
+  for (let score of allCurrentScores) {
+    score.textContent = 0;
+  }
+  // Remove Player Active
+  const players = document.querySelectorAll(".player");
+  for (let player of players) {
+    player.classList.remove("player--active");
+  }
+  // Add active back to Player 1
+  document.querySelector(".player--0").classList.add("player--active");
+};
 
 addGlobalEventListener("click", ".btn--roll", (e) => {
   diceRoll(currentPlayer);
 });
 addGlobalEventListener("click", ".btn--hold", (e) => {
   endTurn(currentPlayer);
+});
+addGlobalEventListener("click", ".btn--new", (e) => {
+  gameReset();
 });
