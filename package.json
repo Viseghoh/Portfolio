@@ -1,0 +1,23 @@
+{
+	"name": "portfolio",
+	"version": "1.0.0",
+	"description": "Portfolio Home",
+	"main": "index.js",
+	"dependencies": {
+		"node-sass": "^5.0.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"sass": "node-sass -w scss -o css"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Viseghoh/Portfolio.git"
+	},
+	"author": "Vidal Iseghohimen",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Viseghoh/Portfolio/issues"
+	},
+	"homepage": "https://github.com/Viseghoh/Portfolio#readme"
+}
