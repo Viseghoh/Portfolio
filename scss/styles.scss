@@ -45,7 +45,7 @@ header {
 		height: 100%;
 		top: 0;
 		left: 0;
-		background: url("../images/Earth_Canyon.jpeg") no-repeat center center/cover;
+		background: url("../images/nature.jpg") no-repeat center center/cover;
 		opacity: 0.2;
 	}
 }
@@ -70,11 +70,28 @@ header {
 // Intro Section
 .intro {
 	text-align: center;
-	font-size: 2.5rem;
 
-	&_content {
+	&__content {
 		padding-top: 30%;
 		z-index: 10;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		.title {
+			font-size: 2.5rem;
+		}
+	}
+	.social-links {
+		display: flex;
+		justify-content: center;
+		font-size: 2rem;
+		li {
+			margin-right: 2rem;
+			margin-top: 1rem;
+			a {
+				color: #fff;
+			}
+		}
 	}
 }
 
